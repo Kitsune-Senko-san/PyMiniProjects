@@ -10,11 +10,8 @@ from colorama import init, Fore, Style
 init()
 
 
+# Class for determining the selection of a shape
 class SelectShapeOfFigure:
-    """
-    Class for determining the selection of a shape
-    """
-
     variable = {1: 'rock', 2: 'paper', 3: 'scissors'}
 
     def __init__(self):
@@ -23,20 +20,13 @@ class SelectShapeOfFigure:
 
     def computer_choice(self):
         """
-        Definition of the computer_choice method
-        generates a random integer from 1 to 3
+        Definition of the computer_choice method generates a random integer from 1 to 3
         :return: uses it to set a random withdrawal representing: rock, paper, or scissors.
         """
         random_selection = random.randint(1, 3)
         self.computer_choice_shape = SelectShapeOfFigure.variable[random_selection]
 
     def user_choice(self):
-        """
-        The user_choice method prompts the user to enter a string
-        representing a rock, paper, or scissors (case-insensitive)
-        and continues to prompt until the correct option is entered.
-        :return: The user's choice is stored in self.user_choice_shape.
-        """
         while True:
             self.user_choice_shape = input("Choose one of the shapes (rock/paper/scissors): ").lower()
             if self.user_choice_shape not in ('rock', 'paper', 'scissors'):
@@ -45,10 +35,8 @@ class SelectShapeOfFigure:
             break
 
 
+# Subclass to determine the winner of the game
 class WhoWinner(SelectShapeOfFigure):
-    """
-    Subclass to determine the winner of the game
-    """
 
     def game_winner(self):
         """
@@ -92,5 +80,6 @@ class WhoWinner(SelectShapeOfFigure):
             print("Unfortunately, today fortune was not on your side. The Computer Won!")
 
 
-result = WhoWinner()
-result.game_winner()
+if __name__ == '__main__':
+    result = WhoWinner()
+    result.game_winner()
